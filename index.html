@@ -67,8 +67,20 @@
             font-weight: bold;
             color: #4CAF50;
         }
+
+        .error-message {
+            color: #ff0000;
+            font-size: 14px;
+            margin-top: 8px;
+        }
     </style>
     <script>
+        function isValidRoman(roman) {
+            // Regular expression to match valid Roman numerals
+            const romanPattern = /^(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
+            return romanPattern.test(roman);
+        }
+
         function romanToHex(roman) {
             const romanToDecimal = {
                 'I': 1,
@@ -98,8 +110,17 @@
 
         function convert() {
             const romanNumeral = document.getElementById('romanInput').value.toUpperCase();
+
+            // Check if the input is a valid Roman numeral
+            if (!isValidRoman(romanNumeral)) {
+                document.getElementById('hexOutput').innerText = "";
+                document.getElementById('error').innerText = "Invalid Roman numeral! Please enter a valid Roman numeral.";
+                return;
+            }
+
             const hexOutput = romanToHex(romanNumeral);
             document.getElementById('hexOutput').innerText = hexOutput;
+            document.getElementById('error').innerText = "";
         }
     </script>
 </head>
@@ -110,7 +131,9 @@
         <input type="text" id="romanInput">
         <button onclick="convert()">Convert</button>
         <div id="hexOutput"></div>
+        <div id="error" class="error-message"></div>
     </div>
 </body>
 </html>
+
 
