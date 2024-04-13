@@ -4,6 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roman to Hex Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #hexOutput {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    </style>
     <script>
         function romanToHex(roman) {
             const romanToDecimal = {
@@ -40,10 +104,13 @@
     </script>
 </head>
 <body>
-    <h1>Roman to Hex Converter</h1>
-    <label for="romanInput">Enter Roman Numeral:</label>
-    <input type="text" id="romanInput">
-    <button onclick="convert()">Convert</button>
-    <div id="hexOutput"></div>
+    <div class="container">
+        <h1>Roman to Hex Converter</h1>
+        <label for="romanInput">Enter Roman Numeral:</label>
+        <input type="text" id="romanInput">
+        <button onclick="convert()">Convert</button>
+        <div id="hexOutput"></div>
+    </div>
 </body>
 </html>
+
