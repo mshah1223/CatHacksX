@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman to Hex Converter</title>
+    <script>
+        function romanToHex(roman) {
+            const romanToDecimal = {
+                'I': 1,
+                'V': 5,
+                'X': 10,
+                'L': 50,
+                'C': 100,
+                'D': 500,
+                'M': 1000
+            };
+
+            let decimal = 0;
+            let prevValue = 0;
+
+            for (let i = roman.length - 1; i >= 0; i--) {
+                let currentValue = romanToDecimal[roman[i]];
+                if (currentValue < prevValue) {
+                    decimal -= currentValue;
+                } else {
+                    decimal += currentValue;
+                }
+                prevValue = currentValue;
+            }
+
+            return decimal.toString(16).toUpperCase();
+        }
+
+        function convert() {
+            const romanNumeral = document.getElementById('romanInput').value.toUpperCase();
+            const hexOutput = romanToHex(romanNumeral);
+            document.getElementById('hexOutput').innerText = hexOutput;
+        }
+    </script>
+</head>
+<body>
+    <h1>Roman to Hex Converter</h1>
+    <label for="romanInput">Enter Roman Numeral:</label>
+    <input type="text" id="romanInput">
+    <button onclick="convert()">Convert</button>
+    <div id="hexOutput"></div>
+</body>
+</html>
